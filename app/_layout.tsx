@@ -1,7 +1,10 @@
 import "../global.css";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
-  // O <Slot /> é onde o Expo vai renderizar a nossa página 'index.tsx'
-  return <Slot />;
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(tabs)" />
+    </Stack>
+  );
 }
