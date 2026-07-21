@@ -2,8 +2,11 @@ import { View, Text, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { Moon, Bell, Info, Heart, ChevronRight, LogOut, ShieldCheck } from 'lucide-react-native';
 import { Colors } from '../../constants/colors';
 import { useState } from 'react';
+import { useRouter } from 'expo-router'; // 1. Importamos o router
 
 export default function Settings() {
+  const router = useRouter(); // 2. Inicializamos o router
+
   // Estados para os botões "Toggle" (interruptores)
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [notifications, setNotifications] = useState(true);
@@ -12,7 +15,18 @@ export default function Settings() {
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 24, paddingBottom: 40 }}>
         
-        <Text className="text-3xl font-extrabold text-gray-900 mb-6">Definições ⚙️</Text>
+        {/* SECÇÃO: Conta / Autenticação (A NOSSA NOVA PORTA DE ENTRADA) */}
+        <TouchableOpacity 
+          onPress={() => router.push('/login')}
+          className="bg-accent rounded-3xl p-6 mb-8 flex-row items-center justify-between shadow-sm"
+          activeOpacity={0.8}
+        >
+          <View>
+            <Text className="text-white font-black text-xl mb-1">Cria o teu Perfil</Text>
+            <Text className="text-white/80 font-medium">Guarda a tua Streak e XP!</Text>
+          </View>
+          <ChevronRight size={24} color="white" />
+        </TouchableOpacity>
 
         {/* SECÇÃO: Preferências */}
         <Text className="text-gray-500 font-bold uppercase text-xs tracking-widest mb-3 ml-2">Preferências</Text>
@@ -52,7 +66,7 @@ export default function Settings() {
           </View>
         </View>
 
-        {/* SECÇÃO: Sobre a Talking Hands (Da tua PAP original!) */}
+        {/* SECÇÃO: Sobre a Talking Hands */}
         <Text className="text-gray-500 font-bold uppercase text-xs tracking-widest mb-3 ml-2">Sobre</Text>
         <View className="bg-white rounded-3xl border border-gray-100 shadow-sm mb-8 overflow-hidden">
           
@@ -94,7 +108,7 @@ export default function Settings() {
           <Text className="font-bold text-danger text-lg ml-2">Terminar Sessão</Text>
         </TouchableOpacity>
         
-        <Text className="text-center text-gray-400 text-xs mt-4">Talking Hands v2.0.0 (Open Source)</Text>
+        <Text className="text-center text-gray-400 text-xs mt-4">Talking Hands v0.4.0 (Open Source)</Text>
       </ScrollView>
     </View>
   );

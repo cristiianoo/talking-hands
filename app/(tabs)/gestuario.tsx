@@ -12,27 +12,44 @@ export default function Gestuario() {
   const [gestos, setGestos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Busca os dados ao Supabase quando a página abre
   useEffect(() => {
     async function fetchGestos() {
       try {
+        console.log("A iniciar pedido ao Supabase...");
+        
+        // A sintaxe correta para Muitos-para-Muitos no Supabase
         const { data, error } = await supabase
-          .from('gestures')
-          .select('id, name, categories(name)');
+          .from('signs')
+          .select(`
+            id, 
+            label, 
+            sign_categories (
+              categories ( name )
+            )
+          `);
 
-        if (error) throw error;
+        if (error) {
+          console.error("Erro do Supabase:", error.message);
+          throw error;
+        }
 
-        // Formata os dados da nuvem
+        console.log("Dados recebidos da nuvem:", JSON.stringify(data, null, 2));
+
         if (data) {
-          const formatados = data.map((g: any) => ({
-            id: g.id,
-            nome: g.name,
-            categoria: g.categories?.name
-          }));
+          const formatados = data.map((g: any) => {
+            // Navegar pelos arrays intermédios para chegar ao nome da categoria
+            const nomeDaCategoria = g.sign_categories?.[0]?.categories?.name || 'Geral';
+            
+            return {
+              id: g.id,
+              nome: g.label, // Na BD chama-se label
+              categoria: nomeDaCategoria
+            };
+          });
           setGestos(formatados);
         }
       } catch (error) {
-        console.error("Erro ao buscar gestos:", error);
+        console.error("Erro fatal ao buscar gestos:", error);
       } finally {
         setLoading(false);
       }
@@ -41,7 +58,7 @@ export default function Gestuario() {
     fetchGestos();
   }, []);
 
-  // O Filtro Duplo
+  // O Filtro Duplo (Pesquisa + Categoria)
   const gestosFiltrados = gestos
     .filter(gesto => categoriaAtiva === 'Todos' ? true : gesto.categoria === categoriaAtiva)
     .filter(gesto => gesto.nome.toLowerCase().includes(textoPesquisa.toLowerCase()));
