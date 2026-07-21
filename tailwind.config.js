@@ -1,16 +1,15 @@
+const { Colors } = require('./constants/colors'); // Importa as tuas cores
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}"
   ],
-  presets: [require("nativewind/preset")], // <--- Esta linha é a novidade!
+  presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      colors: {
-        primary: '#4CAF50', 
-        background: '#F9FAFB',
-      }
+      colors: Colors // O Tailwind passa a usar as constantes diretamente!
     },
   },
   plugins: [],
