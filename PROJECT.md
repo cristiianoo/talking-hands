@@ -1,16 +1,16 @@
 # 🎯 Projeto e Princípios de Desenvolvimento
 
 ## Objetivo do Projeto
-Transformar a aplicação "Talking Hands" (originalmente um projeto PAP) num produto open-source de excelência, servindo tanto como uma ferramenta real para a comunidade aprender Língua Gestual Portuguesa (LGP), como um projeto de referência a nível de arquitetura, código e boas práticas no ecossistema mobile.
+Transformar a aplicação "Talking Hands" num produto open-source de excelência, servindo tanto como uma ferramenta vital para a aprendizagem da LGP, como um *case study* de referência a nível de arquitetura relacional (SQL), código limpo e retenção de utilizadores via gamificação.
 
 ## Princípios Core
-1. **Acessibilidade e Inclusão:** Sendo uma app focada em LGP, a acessibilidade (contraste, modo claro/escuro, navegação intuitiva) não é opcional, é obrigatória.
-2. **Offline-First (sempre que possível):** A aprendizagem deve acontecer em qualquer lugar. Os vídeos e dados sincronizados devem tentar ser cacheados localmente.
-3. **Código Limpo e Escalável:** Utilizar tipagem estrita (TypeScript), componentização modular e separação clara entre a UI e a lógica de negócio (Hooks/Stores).
-4. **Comunicação Clara:** Todo o código submetido deve ser funcional. Commits devem seguir o padrão *Conventional Commits* e pull requests devem estar documentados.
+1. **Guest-First (Inclusão):** A aprendizagem base deve ser sempre acessível sem forçar o utilizador a fazer login imediato. A conta serve para acrescentar valor (Gamificação/Social).
+2. **Segurança no Backend:** A validação de respostas certas e a lógica deXP devem viver no PostgreSQL (Stored Procedures e RLS) e nunca ser expostas no código cliente.
+3. **UI Semântica e Consistente:** A interface deve comunicar através do Design System (Azul para a marca, Laranja para desafios, Verde para sucesso).
+4. **Offline-Ready:** A estrutura deve prever o caching futuro para aprendizagem sem internet.
 
-## Prioridades do MVP (Produto Mínimo Viável)
-1. **Gestuário:** Listagem, pesquisa e filtros de Alfabeto, Números e Palavras.
-2. **Media Player:** Reprodução fluida e otimizada dos vídeos em LGP.
-3. **Módulo de Aprendizagem:** Sistema de *Quizzes* (reconhecimento do gesto) e níveis.
-4. **Palavra Diária:** Destaque de uma palavra/gesto na página inicial (baseado na data atual).
+## Prioridades do MVP (Atualizado)
+1. **Infraestrutura Core:** Roteamento 5-Tabs, Cores Semânticas e Backend relacional Supabase **(Concluído)**.
+2. **Sistema de Autenticação:** Criação de perfis com geração automática na BD **(Concluído)**.
+3. **Gestuário & Media:** Listagem pesquisável de gestos com carregamento de vídeos CDN.
+4. **Motor de Gamificação:** Lógica de Quiz, atribuição de XP, cálculo de *Streak* e visualização na aba Social.

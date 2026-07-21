@@ -1,20 +1,15 @@
 # 👁️ Visão: Talking Hands
 
 ## O Problema
-Em Portugal, a comunicação com pessoas surdas ou com deficiência auditiva ainda apresenta obstáculos significativos. A falta de familiaridade com a Língua Gestual Portuguesa (LGP) por parte da população limita a interação e o diálogo, criando isolamento e exclusão social para a comunidade surda. Observa-se uma carência de métodos de aprendizagem atrativos, havendo também escassez de opções de qualidade gratuitas.
+Em Portugal, a comunicação com pessoas surdas ou com deficiência auditiva ainda apresenta obstáculos significativos. A falta de familiaridade com a Língua Gestual Portuguesa (LGP) cria isolamento social. Além disso, a maioria dos recursos de aprendizagem de LGP são tradicionais, estáticos, ou pouco estimulantes a longo prazo (baixa retenção).
 
 ## A Solução
-A **Talking Hands** é uma aplicação móvel open-source inovadora que revoluciona a forma de aprender LGP. Através de uma interface intuitiva, moderna e gratuita, a aplicação oferece:
-- Um gestuário completo (letras, números e palavras).
-- Níveis de aprendizagem progressivos.
-- Uma secção de palavras diárias para manter o utilizador envolvido.
-- Uma ferramenta de fácil acesso para aprender no quotidiano.
+A **Talking Hands** revoluciona a aprendizagem da LGP ao juntar o rigor de um dicionário à psicologia da **Gamificação e Socialização**. Ao transformar a aprendizagem num jogo (com XP, Streaks e níveis bloqueados) e permitindo a comparação com amigos, a aplicação retém o utilizador por mais tempo, acelerando a inclusão através da constância diária.
 
 ## Público-Alvo
-- Pessoas que desejam aprender LGP por motivos pessoais ou profissionais.
-- Pais, familiares e amigos de crianças/pessoas surdas.
-- Profissionais de educação que trabalham com alunos com deficiência auditiva.
-- Qualquer pessoa que queira promover a inclusão social e integrar-se com a comunidade surda.
+- Pessoas que desejam aprender LGP através de micro-aprendizagem diária (hábitos).
+- Pais, familiares e amigos de pessoas surdas que procuram um método leve e viciante para aprender em conjunto.
+- Profissionais que queiram melhorar o seu currículo através de comunicação inclusiva.
 
 ## Visão de Longo Prazo
-Tornar a *Talking Hands* o repositório open-source de referência em Portugal para a aprendizagem da LGP, construído pela comunidade e para a comunidade, aliando um design de excelência (UI/UX) a tecnologias modernas (React Native & Supabase).
+Tornar a *Talking Hands* o "Duolingo da Língua Gestual Portuguesa", construído de forma 100% open-source pela comunidade, garantindo que o acesso a esta língua seja gratuito, altamente eficaz e tecnologicamente irrepreensível.

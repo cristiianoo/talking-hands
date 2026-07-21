@@ -6,33 +6,30 @@
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-A **Talking Hands** é uma aplicação móvel open-source desenvolvida para revolucionar a forma como se aprende a **Língua Gestual Portuguesa (LGP)**. Com uma interface intuitiva, oferece um gestuário completo e níveis interativos para promover a inclusão da comunidade surda.
+A **Talking Hands** é uma aplicação móvel open-source desenvolvida para revolucionar a forma como se aprende a **Língua Gestual Portuguesa (LGP)**. Aliando um dicionário abrangente a mecânicas de gamificação e interação social, promove a inclusão da comunidade surda de forma interativa e viciante.
 
-> *Este projeto nasceu originalmente como Prova de Aptidão Profissional (PAP) e está agora a ser reestruturado como um projeto open-source profissional de referência.*
+> *Este projeto nasceu originalmente como Prova de Aptidão Profissional (PAP) e está a ser totalmente reconstruído como uma plataforma de nível empresarial (SaaS).*
 
 ---
 
 ## ✨ Funcionalidades Principais
 
-- **📖 Gestuário Completo:** Dicionário com alfabeto, números e palavras organizadas por categorias (cores, dias da semana, meses, saudações, etc.).
-- **🎮 Aprender a Brincar (Quizzes):** Testes interativos com vídeos para adivinhar o gesto correto, avançando de níveis de iniciante a avançado.
-- **📅 Palavras Diárias:** Um novo gesto em destaque todos os dias para manter a aprendizagem contínua.
-- **🎨 UI/UX Personalizável:** Suporte nativo para Modo Claro e Modo Escuro.
-- **🔍 Pesquisa Rápida:** Filtros avançados para encontrar gestos específicos instantaneamente.
+- **🎮 Gamificação (Estilo Duolingo):** Ganha pontos de experiência (XP), mantém a tua *Streak* (chamas) diária e desbloqueia níveis num mapa de progressão visual.
+- **👥 Rede Social & Leaderboards:** Adiciona amigos e compara o teu progresso na aba "Social" para promover uma competitividade saudável.
+- **📖 Gestuário Dinâmico:** Dicionário completo com alfabeto, números e palavras, suportado por uma pesquisa instantânea e base de dados na Cloud.
+- **🔐 Modo Híbrido (Guest-First):** Explora o dicionário sem restrições em Modo Convidado, ou cria conta (Supabase Auth) para guardares o teu progresso na nuvem.
+- **🎨 UI/UX Moderna:** Interface desenhada com cores semânticas centralizadas, suporte nativo para Modo Escuro e navegação fluida em 5 abas.
 
 ## 🛠️ Stack Tecnológico
 
-A arquitetura do projeto foi totalmente migrada de Low-Code (FlutterFlow) para uma stack moderna orientada a código limpo e escalabilidade:
+A arquitetura foi desenhada para máxima escalabilidade, segurança e Developer Experience (DX):
+- **Framework Mobile:** React Native via [Expo Router](https://expo.dev/)
+- **Estilização:** NativeWind v4 (TailwindCSS) com Design Tokens centralizados.
+- **Backend & Base de Dados:** [Supabase](https://supabase.com/) (PostgreSQL com RLS, Triggers e Autenticação).
 
-- **Framework Mobile:** React Native via [Expo](https://expo.dev/) (Expo Router)
-- **Linguagem:** TypeScript
-- **Estilização:** NativeWind (TailwindCSS para React Native)
-- **Backend & Base de Dados:** [Supabase](https://supabase.com/) (PostgreSQL, Auth, Storage)
-- **Gestão de Estado:** Zustand / React Query
+## 🚀 Como Executar o Projeto
 
-## 🚀 Como Executar o Projeto (Em Breve)
-
-Os passos de configuração inicial serão documentados no ficheiro [`docs/SETUP.md`](docs/SETUP.md).
+Lê o nosso guia de configuração passo-a-passo no ficheiro [`docs/SETUP.md`](docs/SETUP.md).
 
 ## 🤝 Como Contribuir
 
