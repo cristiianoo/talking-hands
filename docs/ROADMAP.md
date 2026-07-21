@@ -7,4 +7,4 @@
 - [ ] **Fase 4:** Gestuário (vídeos reais, cache offline, Video Player, favoritos).
 - [ ] **Fase 5:** Autenticação, Streaks, XP e Amigos — login (email, Google, Apple), cálculo automático de streak e XP, pedido/aceitação de amizade, leaderboard **só entre amigos**.
 - [ ] **Fase 6:** Módulo de Quizzes Interativos — motor de perguntas, feedback visual + háptico, validação via `check_answer` (nunca no cliente).
-- [ ] **Fase 7:** Testes, Conformidade (política de privacidade, eliminação de conta), Polimento (offline, acessibilidade) e Lançamento (TestFlight / Google Play Internal).
+- [ ] **Fase 7:** Testes, Conformidade (política de privacidade, eliminação de conta, configurar SMTP próprio e reativar confirmação de email — ver `docs/SETUP.md`), Polimento (offline, acessibilidade) e Lançamento (TestFlight / Google Play Internal).

@@ -21,7 +21,14 @@ EXPO_PUBLIC_SUPABASE_URL=https://teu-projeto.supabase.co
 EXPO_PUBLIC_SUPABASE_ANON_KEY=tua-chave-anon-aqui
 ```
 
-**3. Iniciar a Aplicação**
+**3. Configurar Autenticação (só em desenvolvimento)**
+O serviço de email padrão do Supabase tem um limite muito baixo de envios por hora — suficiente para testar, não para uso real — e é fácil de esgotar ao criar várias contas de teste seguidas.
+
+Para desenvolver sem esbarrar nisso: **Authentication → Providers → Email → desliga "Confirm email"**. Isto permite entrar imediatamente depois de criar conta, sem esperar por um link de confirmação.
+
+> ⚠️ Antes de lançar a app publicamente (Fase 7), é preciso configurar um SMTP próprio (ex: [Resend](https://resend.com)) em **Authentication → Settings → SMTP Settings** e reativar o "Confirm email".
+
+**4. Iniciar a Aplicação**
 ```bash
 npx expo start -c
 ```
