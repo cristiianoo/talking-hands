@@ -1,9 +1,15 @@
 # 📥 Backlog e Ideias Futuras
 
-Ideias de funcionalidades e melhorias técnicas que não fazem parte do MVP imediato, mas que devem ser planeadas:
+Sem desenho de produto decidido ainda — diferente das fases do roadmap, que já estão especificadas.
 
-- **Modo Offline:** Guardar os vídeos e a estrutura da base de dados no `AsyncStorage` ou SQLite local para permitir usar a app sem internet (sincronizando o Streak posteriormente).
-- **Notificações Locais (Push):** Agendar notificações nativas para relembrar o utilizador de manter o Streak diário.
-- **Favoritos:** O utilizador poder guardar os gestos que tem mais dificuldade num separador pessoal (tabela `favorites` já prevista na BD).
-- **Sugestões da Comunidade:** Utilizadores poderem sugerir novos gestos (videos) submetendo um formulário para aprovação dos moderadores.
-- **Micro-interações (Animações):** Usar a biblioteca `Lottie` ou `Reanimated` para criar animações quando o utilizador sobe de nível ou ganha XP (efeito confetti).
+- **Reconhecimento de gestos por câmara** (MediaPipe Hands / TensorFlow Lite) como validação do desafio diário
+- **Notificações push server-side** (Edge Function + cron) — o lembrete local de streak já é core (Fase 5), isto seria a versão mais robusta
+- **Feed de atividade de amigos em tempo real** (Supabase Realtime)
+- **Achievements / badges** (distinto do XP, que já é core)
+- **Micro-interações** (Lottie/Reanimated) ao subir de nível — polimento visual, não bloqueante
+- **Widgets** (iOS/Android)
+- **Versão Web**
+- **Painel de Administração** para gerir conteúdo sem SQL direto
+- **Tradução para Inglês**
+- **Sugestões de gestos pela comunidade**, com fila de moderação
+- **Mover Storage de vídeo** para serviço dedicado (Cloudflare Stream, Mux) se o volume crescer

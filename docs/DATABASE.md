@@ -1,39 +1,36 @@
 # 🗄️ Arquitetura da Base de Dados
 
-A base de dados será alojada no **Supabase** (PostgreSQL). Como a aplicação inicialmente não obrigará a login (conforme a PAP original), o progresso pode ser guardado localmente (Zustand/AsyncStorage) ou através de sessões anónimas no Supabase.
+A base de dados está alojada no **Supabase** (PostgreSQL). A app **tem login desde o início** — não é opcional: streaks, XP e leaderboard entre amigos exigem sincronização real no servidor. A exploração de conteúdo (Gestuário, níveis) continua acessível em modo convidado; login só é pedido para guardar progresso, streak/XP, ou adicionar amigos.
 
-## Esquema Relacional (Tabelas Principais)
+## Esquema Relacional
 
-### `categories`
-Organiza os gestos em grupos (ex: Alfabeto, Números, Cores, Saudações).
-- `id` (uuid, PK)
-- `title` (text) - ex: "Cores"
-- `slug` (text) - ex: "cores"
-- `icon_name` (text) - referência ao ícone da UI
+### `categories` / `signs` / `sign_categories`
+Conteúdo de aprendizagem (letras, números, palavras) e a relação muitos-para-muitos com categorias.
 
-### `gestures`
-A tabela central que guarda cada palavra/letra/número.
-- `id` (uuid, PK)
-- `category_id` (uuid, FK -> categories)
-- `name` (text) - ex: "Amarelo"
-- `video_url` (text) - link para o Supabase Storage
-- `is_daily_eligible` (boolean) - se pode aparecer na "Palavra Diária"
+### `levels` / `questions` / `question_options`
+Estrutura dos quizzes. `question_options.is_correct` **não é legível diretamente pelo cliente** (ver Segurança).
 
-### `daily_words`
-Regista qual o gesto destacado em cada dia.
-- `id` (uuid, PK)
-- `date` (date) - ex: "2026-07-19"
-- `gesture_id` (uuid, FK -> gestures)
+### `profiles`
+Estende `auth.users`.
+- `username` (nullable até o utilizador escolher no onboarding)
+- `avatar_id` — aponta para avatar pré-definido, sem upload livre
+- `current_streak` / `longest_streak`
+- `total_xp` — +20 por nível concluído, +10 por desafio diário concluído
 
-### `quiz_levels`
-Define os níveis de aprendizagem (ex: "Nível 1 - Saudações").
-- `id` (uuid, PK)
-- `title` (text)
-- `description` (text)
-- `order` (integer) - ordenação do nível
+### `user_level_progress` / `daily_challenge_completions`
+Progresso sincronizado no servidor. As inserções nestas tabelas disparam os triggers que calculam streak e XP automaticamente — a app nunca escreve `current_streak`/`total_xp` diretamente.
 
-### `quiz_questions`
-- `id` (uuid, PK)
-- `level_id` (uuid, FK -> quiz_levels)
-- `gesture_id` (uuid, FK -> gestures) - o vídeo a mostrar
-- `options` (jsonb) - array com opções incorretas e a correta
+### `friendships`
+Por pedido/convite (`pending` / `accepted` / `blocked`) — sem descoberta pública, sem leaderboard global.
+
+### `favorites`
+Palavras/gestos marcados para consulta rápida.
+
+## Leaderboard
+Não existe tabela própria. A app chama a função `get_friends_leaderboard()`, que devolve só o próprio utilizador + amigos aceites, ordenado por `total_xp`. Nunca fazer select direto a `profiles` no cliente para isto — a RLS até bloquearia, mas a função é a forma correta.
+
+## Segurança
+- RLS ativo em todas as tabelas com dados de utilizador
+- `question_options.is_correct`: acesso à coluna revogado para `anon`/`authenticated`; validação via `check_answer(option_id)`
+- `profiles`: leitura restrita ao próprio + amigos aceites (função `is_friend`)
+- Migrações em `supabase/migrations/`: `0001_init_schema.sql` (tabelas), `0002_security_and_triggers.sql` (RLS + triggers), `0003_xp_and_leaderboard.sql` (XP + leaderboard)
